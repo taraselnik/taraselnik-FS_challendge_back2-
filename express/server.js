@@ -5,18 +5,18 @@ dotenv.config({path: '.env'});
 import express, { Router } from 'express';
 // import { join } from 'path';
 import serverless from 'serverless-http';
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
 
 const app = express();
 
-const URI = `${process.env.DATABASE_URL}`;
+// const URI = `${process.env.DATABASE_URL}`;
 
-mongoose.set("strictQuery", false);
-mongoose.connect(URI);
+// mongoose.set("strictQuery", false);
+// mongoose.connect(URI);
 
-const db = mongoose.connection;
-db.on('error', (error) => console.log(error))
-db.once('open', () => console.log('DataBase connected...'))
+// const db = mongoose.connection;
+// db.on('error', (error) => console.log(error))
+// db.once('open', () => console.log('DataBase connected...'))
 
 
 const router = Router();
