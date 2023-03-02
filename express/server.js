@@ -3,7 +3,16 @@ import express, { Router } from 'express';
 import { join } from 'path';
 import serverless from 'serverless-http';
 const app = express();
-// import { json } from 'body-parser';
+
+const URI = `${process.env.DATABASE_URL}`;
+
+mongoose.set("strictQuery", false);
+mongoose.connect(URI);
+
+const db = mongoose.connection;
+db.on('error', (error) => console.log(error))
+db.once('open', () => console.log('DataBase connected...'))
+
 
 const router = Router();
 router.get('/', (req, res) => {
