@@ -1,7 +1,12 @@
 'use strict';
+import * as dotenv from 'dotenv';
+dotenv.config({path: '.env'});
+
 import express, { Router } from 'express';
-import { join } from 'path';
+// import { join } from 'path';
 import serverless from 'serverless-http';
+import mongoose from 'mongoose';
+
 const app = express();
 
 const URI = `${process.env.DATABASE_URL}`;
@@ -31,7 +36,7 @@ router.post('/', (req, res) => res.json({ postBody: req.body }));
 
 app.use(express.json());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
-app.use('/', (req, res) => res.sendFile(join(__dirname, '../index.html')));
+// app.use('/', (req, res) => res.sendFile(join(__dirname, '../index.html')));
 
 export default app;
 export const handler = serverless(app);
