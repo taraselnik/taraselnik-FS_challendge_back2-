@@ -1,5 +1,5 @@
 'use strict';
 
-import { listen } from './express/server';
+import app from './express/server.js';
 
-listen(3000, () => console.log('Local app listening on port 3000!'));
+app.listen(3000, () => console.log('Local app listening on port 3000!'));
