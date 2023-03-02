@@ -1,5 +1,5 @@
 'use strict';
 
-const app = require('./express/server');
+import { listen } from './express/server';
 
-app.listen(3000, () => console.log('Local app listening on port 3000!'));
+listen(3000, () => console.log('Local app listening on port 3000!'));
