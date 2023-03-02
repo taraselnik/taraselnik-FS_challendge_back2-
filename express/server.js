@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
   res.end();
 });
 
-router.get('/api', (req, res) => {
+router.get('/api',async (req, res) => {
   res.send('Hello World!')
 });
 
@@ -40,7 +40,8 @@ app.use('/.netlify/functions/server', router);  // path must route to lambda
 
 export default app;
 export const handler = async (event, context) => {
+  context.callbackWaitsForEmptyEventLoop = false;
   const handler = serverless(app);
-  const result = await handler(event, context);
+  const result = handler(event, context);
   return result;
 };
